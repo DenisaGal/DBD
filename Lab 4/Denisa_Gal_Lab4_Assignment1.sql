@@ -1,0 +1,43 @@
+a)
+ALTER TABLE Book_title 
+    ADD CONSTRAINT "BOOK_TITLE_PK" PRIMARY KEY ("T_ID");
+
+ALTER TABLE Student
+    ADD CONSTRAINT "STUDENT_PK" PRIMARY KEY ("S_ID");
+
+ALTER TABLE Book_copy
+    ADD CONSTRAINT "BOOK_COPY_PK" PRIMARY KEY ("B_ID");
+
+ALTER TABLE Book_copy 
+    ADD CONSTRAINT "BOOK_COPY_FK_S" FOREIGN KEY ("STUDENT_ID")
+	REFERENCES  "STUDENT" ("S_ID");
+
+ALTER TABLE Book_copy 
+    ADD CONSTRAINT "BOOK_COPY_FK_T" FOREIGN KEY ("TITLE_ID")
+	REFERENCES  "BOOK_TITLE" ("T_ID") ON DELETE CASCADE;
+
+b)
+ALTER TABLE Book_title
+    MODIFY Title NOT NULL
+    MODIFY Authors NOT NULL
+    MODIFY Year NOT NULL
+    MODIFY Publisher NOT NULL;
+
+ALTER TABLE Book_title
+    ADD CONSTRAINT Check_Year CHECK (Year <= 2021);
+
+ALTER TABLE Book_title
+    ADD CONSTRAINT Check_Page_number CHECK (Page_number > 0 AND Page_number < 1500);
+
+c)
+ALTER TABLE Book_copy
+    ADD CONSTRAINT Check_date CHECK (B_Start < B_End);
+
+d)
+ALTER TABLE Student
+    MODIFY S_Name NOT NULL
+    MODIFY Faculty NOT NULL
+    MODIFY Year_of_study NOT NULL;
+
+ALTER TABLE Student
+    ADD CONSTRAINT Check_Year_of_study CHECK (Year_of_study >= 1 AND Year_of_study <= 4);

@@ -1,0 +1,24 @@
+CREATE SEQUENCE   "Ticket_SEQUENCE"  
+    INCREMENT BY 1
+    START WITH 0
+    MAXVALUE 999999999999
+    MINVALUE 0
+    CYCLE
+    CACHE 100;
+
+CREATE OR REPLACE EDITIONABLE TRIGGER  "Ticket_ID_TRIGGER" 
+    BEFORE INSERT ON Ticket
+    FOR EACH ROW
+     WHEN (new.Id IS NULL) BEGIN
+        SELECT Ticket_SEQUENCE.NEXTVAL
+        INTO   :new.Id
+        FROM   dual;
+    END;
+
+CREATE OR REPLACE PROCEDURE Reserve_Ticket( (pClient_ID IN Varchar2, pFlight_ID IN Varchar2, pDiscount IN Number) AS  
+    TPrice  Number;
+BEGIN
+    TPrice 
+    INSERT INTO Ticket VALUES(Id, pClient_ID, pFlight_ID, Sysdate, TPrice);
+    DBMS_OUTPUT.put_line('Client: ' || pClient_ID || ' reserved a ticket for flight ' || pFlight_ID || ' with a discount of ' || pDiscount || '% and a total price of ' || TPrice || ' ron.');
+END Reserve_Ticket;

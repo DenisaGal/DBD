@@ -1,0 +1,35 @@
+INSERT INTO Book_title VALUES ('FF2400', 'A Study in Scarlet', 'Arthur Conan Doyle', '2007', 'Filiquarian', '176');
+INSERT INTO Book_title VALUES ('4', 'The Sign of the Four', 'Arthur Conan Doyle', '2015', 'William Collins', '256');
+INSERT INTO Book_title VALUES ('221B', 'The Adventures of Sherlock Holmes', 'Arthur Conan Doyle', '1892', 'George Newnes', '307');
+INSERT INTO Book_title VALUES ('123', 'Murder on the Orient Express', 'Agatha Christie', '1934', 'Collins Crime Club', '256');
+INSERT INTO Book_title VALUES ('ABC', 'The A.B.C. Murders', 'Agatha Christie', '1936', 'Collins Crime Club', '256');
+INSERT INTO Book_title VALUES ('450', '4.50 from Paddington', 'Agatha Christie', '1957', 'Collins Crime Club', '256');
+
+INSERT INTO Student VALUES ('4', 'Jane Doe', '3', 'AC', '8.88');
+INSERT INTO Student VALUES ('5', 'John Doe', '4', 'AC', '6');
+INSERT INTO Student VALUES ('1', 'Sherlock Holmes', '1', 'AC', '10');
+INSERT INTO Student VALUES ('6', 'Luke Collins', '2', 'AC', '5');
+INSERT INTO Student VALUES ('3', 'Hercule Poirot', '3', 'AC', '9.5');
+INSERT INTO Student VALUES ('2', 'Patrick Jane', '4', 'AC', '9.9');
+INSERT INTO Student VALUES ('7', 'William Weller', '1', 'AC', '7');
+INSERT INTO Student VALUES ('8', 'John Smith', '2', 'AC', '4.3');
+
+INSERT INTO Book_copy VALUES ('62d', '221B', '2', '12/10/2005', '12/25/2005');
+INSERT INTO Book_copy VALUES ('145', '221B', '6', '7/3/2007', '12/25/2007');
+INSERT INTO Book_copy VALUES ('dsf', '221B', '2', '6/30/2017', '12/6/2017');
+INSERT INTO Book_copy VALUES ('wee2', '221B', '3', '1/3/2003', '12/3/2003');
+INSERT INTO Book_copy VALUES ('dfw', '123', '4', '12/12/2020', '2/13/2021');
+INSERT INTO Book_copy VALUES ('srw', '123', '1', '11/11/2011', '12/12/2011');
+INSERT INTO Book_copy VALUES ('324', '123', '7', '10/15/2018', '10/25/2018');
+INSERT INTO Book_copy VALUES ('fd4', '4', '8', '1/31/2013', '2/4/2013');
+INSERT INTO Book_copy VALUES ('wef', '4', '7', '2/28/2013', '3/5/2013');
+INSERT INTO Book_copy VALUES ('357', '4', '5', '3/28/2014', '4/6/2014');
+INSERT INTO Book_copy VALUES ('4fv', 'ABC', '5', '4/27/2014', '5/7/2014');
+INSERT INTO Book_copy VALUES ('hhy', 'ABC', '8', '5/26/2015', '6/8/2015');
+INSERT INTO Book_copy VALUES ('53', 'ABC', '4', '6/24/2016', '7/11/2016');
+INSERT INTO Book_copy VALUES ('gh3', 'FF2400', '3', '7/23/2016', '8/12/2016');
+INSERT INTO Book_copy VALUES ('4gf', 'FF2400', '7', '8/22/2017', '9/13/2017');
+INSERT INTO Book_copy VALUES ('34trf', 'FF2400', '2', '9/21/2018', '10/14/2018');
+INSERT INTO Book_copy VALUES ('g4s', '450', '5', '10/19/2019', '11/15/2019');
+INSERT INTO Book_copy VALUES ('13443', '450', '2', '11/18/2020', '12/16/2020');
+INSERT INTO Book_copy VALUES ('g5g', '450', '1', '12/17/2020', '1/17/2021');

@@ -1,0 +1,101 @@
+DECLARE
+    TYPE Book_Record IS RECORD
+            (T_ID           Varchar2(20),
+            Title           Varchar2(100),
+            Authors         Varchar2(20),
+            Year            Number,
+            Publisher       Varchar2(20),
+            Page_number     Number,
+            Copies          Number);
+            Book_R1  Book_Record;
+BEGIN
+    SELECT T_ID, Title, Authors, Year, Publisher, Page_number, COUNT(Book_copy.Title_ID) INTO Book_R1
+        FROM Book_title LEFT JOIN Book_copy ON (Book_title.T_ID = Book_copy.Title_ID)
+        GROUP BY T_ID, Title, Authors, Year, Publisher, Page_number
+        HAVING COUNT(Book_copy.Title_ID) > 2
+        FETCH FIRST 1 ROWS ONLY;
+
+    DBMS_OUTPUT.PUT_LINE(Book_R1.T_ID || ' ' || Book_R1.Title || ' ' || Book_R1.Authors || ' ' || Book_R1.Year || ' ' || Book_R1.Publisher || ' ' || Book_R1.Page_number);
+END;
+
+DECLARE
+    i                   Number;
+    Number_of_records   Number;
+    CURSOR Student_Cursor IS SELECT * FROM Student;
+    STD_Cursor1 Student_Cursor%RowType;
+    TYPE Student_Record_Table IS TABLE OF Student%RowType INDEX BY binary_integer;
+    STD_RT1 Student_Record_Table; 
+BEGIN
+    OPEN Student_Cursor;
+
+    FOR i IN 1..&N LOOP
+        FETCH Student_Cursor INTO STD_RT1(i);
+        STD_RT1(i).Faculty := 'Some Faculty';
+        IF (STD_RT1(i).Year_of_study == 4 AND STD_RT1(i).Average_mark > 5) THEN
+            DELETE FROM STD_RT1 WHERE S_Id = STD_RT1(i).S_ID
+        ELSE
+            IF (STD_RT1(i).Average_mark > 5)
+            END IF;
+        END IF;
+        EXIT WHEN STD_Cursor1%NotFound;
+        Number_of_records := i;
+    END LOOP;
+
+    CLOSE Student_Cursor;
+END;
+
+
+DECLARE
+    CURSOR Student_Cursor IS SELECT * FROM Student;
+    TYPE S_ID IS TABLE OF Student.S_ID%Type INDEX BY BINARY_INTEGER;
+    TYPE S_Name IS TABLE OF Student.S_Name%Type INDEX BY BINARY_INTEGER;
+    TYPE Year_of_study IS TABLE OF Student.Year_of_study%Type INDEX BY BINARY_INTEGER;
+    TYPE Faculty IS TABLE OF Student.Faculty%Type INDEX BY BINARY_INTEGER;
+    TYPE Average_mark IS TABLE OF Student.Average_mark%Type INDEX BY BINARY_INTEGER;
+    S_id_record             S_ID;
+    S_Name_record           S_Name;
+    Year_of_study_record    Year_of_study;
+    Faculty_record          Faculty;
+    Average_mark_record     Average_mark;
+    Id_index                 Number :=0;
+    Id                      Number;
+    Year_Id                 Number; 
+BEGIN 
+    FOR student in students LOOP
+        Id_index := Id_index +1;
+        S_id_record(Id_index) := Student.S_ID;
+        S_Name_record(Id_index) := Student.S_Name;
+        Year_of_study_record(Id_index) := Student.Year_of_study;
+        Faculty_record(Id_index) := Student.Faculty;
+        Average_mark_record(Id_index) := Student.Average_mark;
+    END LOOP;
+    
+    FOR i IN 1 .. id_list.COUNT LOOP
+    faculty_list(i) := 'New_faculty';
+    
+        IF year_list(i) = 4 AND mark_list(i) > 5 THEN
+            name_list.delete(i);
+        END IF;
+    
+        IF year_list(i) < 4 AND mark_list(i) > 5 THEN
+            year_list(i) := year_list(i) + 1;
+        END IF;   
+    END LOOP;
+    
+    id := name_list.FIRST;
+    
+    WHILE id is NULL LOOP
+            year_list.delete(id);
+            faculty_list.delete(id);
+            mark_list.delete(id);
+            id := name_list.NEXT(id);
+    END LOOP;
+    
+    id := name_list.FIRST;
+    
+    WHILE id IS NOT NULL LOOP
+    DBMS_OUTPUT.put_line ('Name: ' || name_list(id) || ' Year:' || year_list(id)
+                            || ' Faculty: ' || faculty_list(id) || ' Mark: ' || mark_list(id));
+    id := name_list.NEXT(id);
+    END LOOP; 
+END;

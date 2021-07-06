@@ -1,0 +1,16 @@
+SELECT Title_ID, COUNT(*) AS Number_of_books
+    FROM Book_copy 
+    WHERE B_Start IS NULL AND B_End IS NULL
+    GROUP BY Title_ID
+
+SELECT Book_title.T_ID, Book_title.TITLE, Book_title.AUTHORS, Book_title.PUBLISHER, DECODE(Book_title.PUBLISHER, 'Editura UPT', 'local'
+                                              ,'abroad') "Local/Abroad",  COUNT(Book_copy.Title_ID) as "Number of copies"
+    FROM Book_title
+    left join Book_copy
+    on (Book_title.T_ID=Book_copy.Title_ID AND B_Start IS NULL)
+    group by 
+        Book_title.T_ID,
+        Book_title.TITLE, 
+        Book_title.AUTHORS, 
+        Book_title.PUBLISHER
+    HAVING COUNT(Book_copy.Title_ID) > 3;

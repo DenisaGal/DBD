@@ -1,0 +1,1 @@
+DELETE FROM Student WHERE S_ID NOT IN (SELECT Student_ID FROM Book_copy)

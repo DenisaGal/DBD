@@ -1,0 +1,13 @@
+SELECT * 
+    FROM Student
+    WHERE S_id = '2'
+DBMS_OUTPUT.PUT_LINE();
+
+SELECT * 
+    FROM Student
+    WHERE S_id = '2'
+DBMS_OUTPUT.PUT_LINE(REGEXP_SUBSTR(S_Name,'^[A-Za-z0-9]') || '.' || REGEXP_SUBSTR(LTRIM(S_Name, REGEXP_SUBSTR(S_Name,'[A-Za-z0-9]* ')), '([A-Za-z0-9]*)') || ' ' || DECODE(sign(9 - Average_Mark), -1, 'Excelent', 'Good') || ' ' || Average_Mark || ' ' || DECODE(Year_of_study, 4, 'SeniorStudent ', 'Student ') || ' ' || Year_of_study);
+
+SELECT REGEXP_SUBSTR(S_Name,'^[A-Za-z0-9]') || '.' || REGEXP_SUBSTR(LTRIM(S_Name, REGEXP_SUBSTR(S_Name,'[A-Za-z0-9]* ')), '([A-Za-z0-9]*)') || ' ' || DECODE(sign(9 - Average_Mark), -1, 'Excelent', 'Good') || ' ' || Average_Mark || ' ' || DECODE(Year_of_study, 4, 'SeniorStudent ', 'Student ') || ' ' || Year_of_study AS Student_Info
+    FROM Student
+    WHERE S_id = 2;

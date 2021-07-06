@@ -1,0 +1,2 @@
+SELECT '[' || REGEXP_REPLACE(Authors,'(^| )([^ ])([^ ])*','\2') || SUBSTR(Year,3,4) || '] ' || Authors || ', "' || Title || '", ' || Publisher || ', ' || Year || ', ' || Page_number || ' pgs' AS Book_Info
+    FROM Book_title
